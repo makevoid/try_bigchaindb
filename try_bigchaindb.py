@@ -32,7 +32,7 @@ tx = b.create_transaction(b.me, pub_key, None, 'CREATE', payload=asset_payload)
 tx_signed = sign_and_write(tx, b.me_private)
 print("TX:", tx_signed, "\n")
 
-time.sleep(8)
+time.sleep(8) # bigchaindb takes a couple of seconds to confirm a transaction
 tx_retrieved = b.get_transaction(tx_signed['id'])
 print("TX retrieved:", tx_retrieved, "\n")
 
