@@ -5,3 +5,27 @@
 	margin-bottom: 0;
 	max-width: 80.0rem;
 }
+
+.hidden {
+	display: none;
+}
+
+
+h5 {
+	padding-top: 20px;
+}
+
+div > h5:first-child {
+	padding-top: 0;
+}
+
+h5, h6 {
+	font-weight: bold;
+}
+
+
+label.icon {
+	position: absolute;
+	right: 32px;
+	margin-top: 5px;
+}

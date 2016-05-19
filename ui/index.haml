@@ -1,3 +1,13 @@
+:ruby
+  host = "http://localhost:3001"
+
+  require_relative '../bigchain-rb/bigchain'
+  B = Bigchain.new
+
+  require_relative 'lib/ui'
+  extend UILib
+
+
 !!!
 %html
   %head
@@ -21,10 +31,19 @@
               <a class="navigation-link">Support</a>
               </li>
       .container
+        %h5 Blocks:
         %h6
-          %a{ href: "http://localhost:3001/blocks/last" } Latest block
+          %a{ href: "#{host}/blocks/last" } Latest block
         %h6
-          %a{ href: "http://localhost:3001/blocks" } Blocks
-        public key
-        private key (reveal)
-        %form{ action: "index.html",  method: "post" }
+          %a{ href: "#{host}/blocks" } Blocks
+
+        %h5 Main (coinbase) keys:
+        %h6 Public key:
+        - key_label B.key_pub
+        %h6 Private key:
+        %button{ onclick: toggler("pvt") } Reveal &nbsp; 🔑
+        %div.hidden.toggle_pvt
+          - key_label B.key_pvt
+
+
+        %form{ action: "#{host}/keys",  method: "post" }
