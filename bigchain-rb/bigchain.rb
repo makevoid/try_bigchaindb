@@ -12,5 +12,5 @@ class Bigchain
   def assets_new
     py "assets_new_admin.py"
   end
-  
+
 end

@@ -20,7 +20,7 @@ def keys():
 def keys_new():
   return crypto.generate_key_pair()
 
-def asset_new(private_key, asset_owner_pub_key):
+def assets_new(private_key, asset_owner_pub_key):
   asset_payload = {'msg': 'Arbitrary data as asset description'}
   tx = b.create_transaction(private_key, asset_owner_pub_key, None, 'CREATE', payload=asset_payload)
   tx_signed = sign_and_write(tx, b.me_private)
@@ -29,7 +29,7 @@ def asset_new(private_key, asset_owner_pub_key):
   tx_retrieved = b.get_transaction(tx_signed['id'])
   return tx_retrieved
 
-def asset_new_admin():
+def assets_new_admin():
   priv, pub = keys()
-  tx_retrieved = asset_new(priv, pub)
+  tx_retrieved = assets_new(priv, pub)
   return tx_retrieved
