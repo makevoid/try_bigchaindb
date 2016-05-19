@@ -34,7 +34,7 @@
         <h6>
           <a href='http://localhost:3001/blocks'>Blocks</a>
         </h6>
-        <h5>Main (coinbase) keys:</h5>
+        <h5>Main keys:</h5>
         <h6>Public key:</h6>
         <label class='icon'>
           🔑
@@ -48,7 +48,14 @@
           </label>
           <input disabled type='text' value='BJRsLv4ztmsn1vVNRjfFtpBHHvJdQJWHiNp2SgX2o177' />
         </div>
-        <form action='http://localhost:3001/keys' method='post'></form>
+        <h5>User keys:</h5>
+        <form action='http://localhost:3001/keys' method='post'>
+          <input type='submit' value='Generate 🔑'>
+        </form>
+        <h5>Create admin asset:</h5>
+        <form action='http://localhost:3001/assets/admin' method='post'>
+          <input type='submit' value='Create asset'>
+        </form>
       </div>
     </div>
   </body>

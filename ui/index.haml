@@ -37,7 +37,7 @@
         %h6
           %a{ href: "#{host}/blocks" } Blocks
 
-        %h5 Main (coinbase) keys:
+        %h5 Main keys:
         %h6 Public key:
         - key_label B.key_pub
         %h6 Private key:
@@ -45,5 +45,10 @@
         %div.hidden.toggle_pvt
           - key_label B.key_pvt
 
-
+        %h5 User keys:
         %form{ action: "#{host}/keys",  method: "post" }
+          %input{ type: "submit", value: "Generate 🔑" }
+
+        %h5 Create admin asset:
+        %form{ action: "#{host}/assets/admin",  method: "post" }
+          %input{ type: "submit", value: "Create asset" }

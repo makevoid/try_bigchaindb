@@ -1,8 +1,4 @@
-class RethinkDB::RQL
-  def blocks
-    db('bigchain').table('bigchain').order_by(desc 'block_number')
-  end
-end
+require_relative 'rethink/monkeypatches'
 
 class Rethink
   include RethinkDB::Shortcuts

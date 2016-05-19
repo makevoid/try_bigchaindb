@@ -3,6 +3,8 @@ require 'roda'
 require 'oj'
 require 'rethinkdb'
 
-require_relative 'rethink'
+require_relative 'lib/rethink'
 
 Oj.default_options = { mode: :compat }
+
+require_relative '../bigchain-rb/bigchain'
