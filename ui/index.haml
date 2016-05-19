@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{ charset: "utf-8" }/
+    %title Bigchain UI
+    %link{ charset: "utf-8",  href: "./css/vendor/milligram.css",  media: "screen",  rel: "stylesheet" }/
+    %link{ charset: "utf-8",  href: "./css/nav.css",  media: "screen",  rel: "stylesheet" }/
+    %link{ charset: "utf-8",  href: "./css/style.css",  media: "screen",  rel: "stylesheet" }/
+  %body
+    .wrapper
+      %nav.navigation
+        .container
+          %a.navigation-title{ href: "/" }
+            BigchainUI
+          %ul.navigation-list.float-right
+            /
+              <li class="navigation-item">
+              <a class="navigation-link">Docs</a>
+              </li>
+              <li class="navigation-item">
+              <a class="navigation-link">Support</a>
+              </li>
+      .container
+        %h6
+          %a{ href: "http://localhost:3001/blocks/last" } Latest block
+        %h6
+          %a{ href: "http://localhost:3001/blocks" } Blocks
+        public key
+        private key (reveal)
+        %form{ action: "index.html",  method: "post" }
