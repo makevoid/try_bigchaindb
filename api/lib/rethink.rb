@@ -1,7 +1,14 @@
 require_relative 'rethink/monkeypatches'
 
+module Utils
+  def mash(object)
+    Hashie::Mash.new object
+  end
+end
+
 class Rethink
   include RethinkDB::Shortcuts
+  include Utils
 
   LIMIT = 100
 
@@ -14,7 +21,8 @@ class Rethink
   end
 
   def blocks_last
-    r.blocks.limit(1).run
+    block = r.blocks.limit(1).run.first
+    mash block
   end
 
 end

@@ -22,11 +22,15 @@ def keys_new():
   return crypto.generate_key_pair()
 
 def assets_new(private_key, asset_owner_pub_key):
-  asset_payload = {'msg': 'Arbitrary data as asset description'}
+  asset_payload = {
+    'type': 'asset',
+    'id': 1,
+    'amount': 1000,
+    'date': '2016-01-01'
+  }
   tx = b.create_transaction(asset_owner_pub_key, asset_owner_pub_key, None, 'CREATE', payload=asset_payload)
   # print("TX:", tx)
   tx_signed = sign_and_write(tx, private_key)
-
   # print("TX signed:", tx_signed)
   # time.sleep(6) # default settings
   time.sleep(0.2) # fast_confirmation fork - @makevoid's fork at github.com/makevoid/bigchaindb

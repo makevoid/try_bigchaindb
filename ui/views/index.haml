@@ -1,13 +1,23 @@
 :ruby
+  require 'json'
   host = "http://localhost:3001"
 
-  require_relative '../bigchain-rb/bigchain'
+  require_relative '../../bigchain-rb/bigchain'
   B = Bigchain.new
 
-  require_relative 'lib/ui'
+  # TODO: move into bigchain-rb
+  require 'rethinkdb'
+  require_relative '../../api/lib/rethink'
+  DB = Rethink.new
+
+  require_relative '../lib/ui'
   extend UILib
 
-
+  block = DB.blocks_last
+  if block
+    tx = block.block.transactions.last
+    tx_payload = tx.transaction.data.payload
+  end
 !!!
 %html
   %head
@@ -50,5 +60,23 @@
           %input{ type: "submit", value: "Generate 🔑" }
 
         %h5 Create admin asset:
+        - asset = '{"amount":1000,"date":"2016-01-01","id":1,"type":"asset"}'
+        %input{ type: "text", disabled: true, value: asset }
+
         %form{ action: "#{host}/assets/admin",  method: "post" }
           %input{ type: "submit", value: "Create asset" }
+
+        - if block
+          %h6 Last Block:
+          %p= block.id
+
+          %h5 Edit last asset:
+          %p
+            %strong TX ID:
+            %span= tx.id
+          %form{ action: "#{host}/assets/admin",  method: "post" }
+            %textarea{ name: "data" }= tx_payload.to_json
+            %input{ type: "submit", value: "Edit" }
+
+
+    %script{ src: "./js/index.js", type: "text/javascript" }
