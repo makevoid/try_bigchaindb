@@ -74,7 +74,7 @@
           %p
             %strong TX ID:
             %span= tx.id
-          %form{ action: "#{host}/assets/admin",  method: "post" }
+          %form{ action: "#{host}/assets/#{tx.id}/admin",  method: "post" }
             %textarea{ name: "data" }= tx_payload.to_json
             %input{ type: "submit", value: "Edit" }
 

@@ -41,3 +41,19 @@ def assets_new_admin():
   priv, pub = keys()
   tx_retrieved = assets_new(priv, pub)
   return tx_retrieved
+
+def assets_transact(tx_id, asset_payload, private_key, asset_owner_pub_key):
+  tx_id = {
+    'cid': 0,
+    'txid': tx_id
+  }
+  tx = b.create_transaction(asset_owner_pub_key, asset_owner_pub_key, tx_id, 'TRANSFER', payload=asset_payload)
+  tx_signed = sign_and_write(tx, private_key)
+  time.sleep(0.2)
+  tx_retrieved = b.get_transaction(tx_signed['id'])
+  return tx_retrieved
+
+def assets_transact_admin(tx_id, asset):
+  priv, pub = keys()
+  tx_retrieved = assets_transact(tx_id, asset, priv, pub)
+  return tx_retrieved

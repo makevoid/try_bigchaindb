@@ -6,6 +6,7 @@ B  = Bigchain.new
 class BigchainApi < Roda
   plugin :json
   plugin :not_found
+  plugin :indifferent_params
 
   route do |r|
     r.root do
@@ -31,9 +32,25 @@ class BigchainApi < Roda
     end
 
     r.on "assets" do
-      r.get ":id" do
-        # B.asset 1
-        { id: 1 }
+
+      r.on ":id" do |id|
+        r.get do
+          # B.asset 1
+          { id: 1 }
+        end
+
+        r.post do
+          r.on "admin" do
+            r.post do
+              asset = params[:data]
+              B.assets_transact_admin id, asset
+            end
+          end
+
+          r.is do
+            B.assets_transact
+          end
+        end
       end
 
       r.get do
