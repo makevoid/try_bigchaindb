@@ -1,5 +1,7 @@
-from env import asset_new_admin
+from env import assets_new_admin
+import json
 
-asset_tx = asset_new_admin()
+asset_tx = assets_new_admin()
+asset_tx = json.dumps(asset_tx)
 
 print(asset_tx)

@@ -9,3 +9,4 @@ class Bigchain
 end
 
 require_relative 'bigchain/keys'
+require_relative 'bigchain/assets'

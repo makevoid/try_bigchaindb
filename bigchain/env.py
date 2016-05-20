@@ -1,5 +1,6 @@
 from bigchaindb import crypto
 from bigchaindb import Bigchain
+import time
 
 b = Bigchain()
 
@@ -22,10 +23,13 @@ def keys_new():
 
 def assets_new(private_key, asset_owner_pub_key):
   asset_payload = {'msg': 'Arbitrary data as asset description'}
-  tx = b.create_transaction(private_key, asset_owner_pub_key, None, 'CREATE', payload=asset_payload)
-  tx_signed = sign_and_write(tx, b.me_private)
+  tx = b.create_transaction(asset_owner_pub_key, asset_owner_pub_key, None, 'CREATE', payload=asset_payload)
+  # print("TX:", tx)
+  tx_signed = sign_and_write(tx, private_key)
 
-  time.sleep(8) # bigchaindb takes a couple of seconds to confirm a transaction
+  # print("TX signed:", tx_signed)
+  # time.sleep(6) # default settings
+  time.sleep(0.2) # fast_confirmation fork - @makevoid's fork at github.com/makevoid/bigchaindb
   tx_retrieved = b.get_transaction(tx_signed['id'])
   return tx_retrieved
 

@@ -9,11 +9,11 @@ class BigchainApi < Roda
 
   route do |r|
     r.root do
-      r.redirect "/hello"
+      r.redirect "/blocks/last"
     end
 
-    r.get do
-      r.on "blocks" do
+    r.on "blocks" do
+      r.get do
         r.is do
           DB.blocks
         end
@@ -31,16 +31,14 @@ class BigchainApi < Roda
     end
 
     r.on "assets" do
-      r.get do
-
-      end
-
       r.get ":id" do
-
+        # B.asset 1
+        { id: 1 }
       end
 
-      r.post do
-        B.assets_new
+      r.get do
+        [{ id: 1 }]
+        # B.assets
       end
 
       r.on "admin" do
@@ -48,8 +46,11 @@ class BigchainApi < Roda
           B.assets_new_admin
         end
       end
-    end
 
+      r.post do
+        B.assets_new
+      end
+    end
 
   end
 
