@@ -24,6 +24,13 @@ You should be good to go, otherwise repeat this step: https://bigchaindb.readthe
 
 This repo contains an API and a UI for you to play with bichaindb, a sandboxed playground, you may want to run multiple nodes on different hosts/ports to do a full-fledged test:
 
+Install ruby dependencies:
+
+    gem i sinatra roda rethinkdb oj
+
+or by using the Gemfile.
+
+
 Run API:
 
     rackup -p 3001
