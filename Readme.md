@@ -12,8 +12,15 @@ Run:
     rethinkdb
 
 
-Run:
+Setup bigchain if you haven't already:
 
+
+    cd ~/
+    bigchaindb init
+    bigchaindb configure
+
+
+Run:
     bigchaindb start
 
 
@@ -26,9 +33,14 @@ This repo contains an API and a UI for you to play with bichaindb, a sandboxed p
 
 Install ruby dependencies:
 
-    gem i sinatra roda rethinkdb oj
+    gem i bundler
+    bundle
+    
 
-or by using the Gemfile.
+<!-- or (without bundler):
+
+    gem i sinatra roda rethinkdb oj -->
+
 
 
 Run API:

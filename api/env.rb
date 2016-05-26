@@ -1,7 +1,10 @@
 # install: gem i roda oj rethinkdb
-require 'roda'
-require 'oj'
-require 'rethinkdb'
+# require 'roda'
+# require 'oj'
+# require 'rethinkdb'
+require 'bundler'
+Bundler.require :default
+
 
 require_relative 'lib/rethink'
 

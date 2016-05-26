@@ -1,5 +1,5 @@
-require 'sinatra'
-require 'haml'
+require 'bundler'
+Bundler.require :default
 
 class BigchainUI < Sinatra::Base
   get "/" do

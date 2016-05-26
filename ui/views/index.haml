@@ -1,6 +1,7 @@
 :ruby
   require 'json'
   host = "http://localhost:3001"
+  hose = "http://http://api.test1.appb.ch/" if `whoami`.chomp == "www"
 
   require_relative '../../bigchain-rb/bigchain'
   B = Bigchain.new
