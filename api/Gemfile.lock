@@ -1,0 +1,23 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hashie (3.4.3)
+    json (1.8.3)
+    oj (2.15.0)
+    rack (1.6.4)
+    rethinkdb (2.3.0.0)
+      json
+    roda (2.14.0)
+      rack
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hashie
+  oj
+  rethinkdb
+  roda
+
+BUNDLED WITH
+   1.11.2

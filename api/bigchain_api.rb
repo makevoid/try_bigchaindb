@@ -27,46 +27,52 @@ class BigchainApi < Roda
 
     r.on "keys" do
       r.post do
-        B.keys_new
+        r.is do
+          B.keys_new
+        end
       end
     end
 
     r.on "assets" do
+      r.on "admin" do
+        r.post do
+          r.is do
+            B.assets_new_admin
+          end
+        end
+      end
 
       r.on ":id" do |id|
-        r.get do
-          # B.asset 1
-          { id: 1 }
-        end
+        # TODO:
+        # r.get do
+        #   # B.asset 1
+        #   { id: 1 }
+        # end
 
         r.post do
           r.on "admin" do
-            r.post do
+            r.is do
               asset = params[:data]
               B.assets_transact_admin id, asset
             end
           end
 
-          r.is do
-            B.assets_transact
-          end
+          # r.is do
+          #   B.assets_transact
+          # end
         end
       end
 
-      r.get do
-        [{ id: 1 }]
-        # B.assets
-      end
-
-      r.on "admin" do
-        r.post do
-          B.assets_new_admin
+      r.is do
+        r.get do
+          [{ id: 1 }]
+          # B.assets
         end
       end
 
-      r.post do
-        B.assets_new
-      end
+      # r.post do
+      #   B.assets_new
+      # end
     end
 
   end

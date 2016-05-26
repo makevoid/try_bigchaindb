@@ -16,6 +16,7 @@ module Bigchain::Assets
   def assets_transact_admin(tx_id, data)
     # raise "assets_transact_admin.py #{tx_id} #{Shellwords.escape data}".inspect
     resp = py "assets_transact_admin.py #{tx_id} '#{data}'"
+    # raise resp.inspect
     # resp = py "assets_transact_admin.py #{tx_id} '#{Shellwords.escape data}'"
     parse resp
   end
